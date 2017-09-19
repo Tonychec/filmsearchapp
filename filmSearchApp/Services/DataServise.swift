@@ -19,7 +19,7 @@ class DataServise {
     public var genreList = [FilmGenre]()
     public var tempSortedList = [Movie]()
     
-    
+    // to do - check error in favoriteList sort
     func sortList(list: [Movie], genre: Int) {
         var tempList = [Movie]()
         for element in list {
@@ -80,7 +80,7 @@ class DataServise {
         film3.addToRelationship(filmGenr)
         film3.addToRelationship(filmGenr3)
         
-        film3.title = "second Film"
+        film3.title = "third Film"
         film3.id = 4221
         film3.image = UIImage(named: "comingSoon")
         film3.overview = " filmGenr - 0, 2 "
@@ -97,7 +97,7 @@ class DataServise {
         film4.relationship1 = movDet4
         film4.addToRelationship(filmGenr4)
         
-        film4.title = "second Film"
+        film4.title = "fourth Film"
         film4.id = 4221
         film4.image = UIImage(named: "comingSoon")
         film4.overview = " filmGenr - 3 "

@@ -32,11 +32,17 @@ class FilmCell: UITableViewCell {
         if currentFilmList == .favorite {
             let film = DataServise.instance.favoriteList[currentCellId!]
             film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+            DataServise.instance.favoriteList.remove(at: currentCellId!)
         } else {
             let film = DataServise.instance.popList[currentCellId!]
             film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+            if (film.relationship1?.isFavorite)! {
+                DataServise.instance.favoriteList.append(film)
+            } else {
+                let id = DataServise.instance.favoriteList.index(of: film)
+                DataServise.instance.favoriteList.remove(at: id!)
+            }
         }
-        //to do reload data of cell
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

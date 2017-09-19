@@ -123,6 +123,7 @@
                                                     <state key="normal" image="favoriteBtn"/>
                                                     <connections>
                                                         <action selector="favoriteBtnPressed:" destination="9tj-0Z-0uF" eventType="touchUpInside" id="smh-3x-4y6"/>
+                                                        <action selector="fovBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chC-xZ-lEA"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

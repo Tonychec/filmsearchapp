@@ -87,6 +87,10 @@ DataServise.instance.setDef()//debug call
         popularFilmsTable.reloadData()
     }
     
+    @IBAction func fovBtnPressed(_ sender: Any) {
+        popularFilmsTable.reloadData()
+    }
+    
     @IBAction func segmentControllChenged(_ sender: Any) {
         switch popFovPicker.selectedSegmentIndex {
         case 1:
