@@ -1,24 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+            <string>HelveticaNeue-Italic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainVC" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="filmSearchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="filmSearchApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rxN-M4-awl">
+                                <rect key="frame" x="40" y="30" width="295" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zJS-o0-aKM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Favorite"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fHY-cZ-qEw">
+                                <rect key="frame" x="10" y="607" width="355" height="50"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZm-xg-WXi">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="yrM-Cc-5Py"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qv-7q-vJq" customClass="CircleBtn" customModule="filmSearchApp" customModuleProvider="target">
+                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8DO-TY-rsb"/>
+                                            <constraint firstAttribute="width" constant="50" id="LJP-Uc-TL1"/>
+                                        </constraints>
+                                        <state key="normal" image="searchBtn"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9V2-qv-DpY"/>
+                                    <constraint firstItem="3Qv-7q-vJq" firstAttribute="leading" secondItem="rZm-xg-WXi" secondAttribute="trailing" id="Jy6-MH-hNV"/>
+                                    <constraint firstItem="rZm-xg-WXi" firstAttribute="leading" secondItem="fHY-cZ-qEw" secondAttribute="leading" id="ccf-hc-RGG"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Qv-7q-vJq" secondAttribute="trailing" id="xYs-Do-Fek"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-g7-5xL" userLabel="Popular Films Table">
+                                <rect key="frame" x="10" y="70" width="355" height="527"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filmCell" rowHeight="100" id="9tj-0Z-0uF" customClass="FilmCell" customModule="filmSearchApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9tj-0Z-0uF" id="XPi-Oj-nwB">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comingSoon" translatesAutoresizingMaskIntoConstraints="NO" id="peN-IY-sJN">
+                                                    <rect key="frame" x="13" y="13" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="Zfq-2L-4Bj"/>
+                                                        <constraint firstAttribute="height" constant="90" id="miH-HK-9FA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTA-bW-KFc">
+                                                    <rect key="frame" x="108" y="13" width="204" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="tx4-2d-LeE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="0.3411764706" green="0.1529411765" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The place for description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clH-H3-b7z">
+                                                    <rect key="frame" x="108" y="46" width="204" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.3411764706" green="0.1529411765" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvx-xN-F4k">
+                                                    <rect key="frame" x="317" y="37.5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="nkG-aC-9JQ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="otF-FH-fk6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.3411764706" green="0.1529411765" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aT9-pJ-DEx" customClass="CircleBtn" customModule="filmSearchApp" customModuleProvider="target">
+                                                    <rect key="frame" x="317" y="8" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0Nm-uh-HPq"/>
+                                                        <constraint firstAttribute="width" constant="30" id="1M7-HZ-90Y"/>
+                                                    </constraints>
+                                                    <state key="normal" image="favoriteBtn"/>
+                                                    <connections>
+                                                        <action selector="favoriteBtnPressed:" destination="9tj-0Z-0uF" eventType="touchUpInside" id="smh-3x-4y6"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="wvx-xN-F4k" firstAttribute="leading" secondItem="clH-H3-b7z" secondAttribute="trailing" constant="5" id="2ho-or-aCu"/>
+                                                <constraint firstItem="peN-IY-sJN" firstAttribute="top" secondItem="XPi-Oj-nwB" secondAttribute="topMargin" constant="5" id="FyZ-kc-ipl"/>
+                                                <constraint firstAttribute="trailing" secondItem="aT9-pJ-DEx" secondAttribute="trailing" constant="8" id="Ldy-cB-56g"/>
+                                                <constraint firstItem="nTA-bW-KFc" firstAttribute="leading" secondItem="peN-IY-sJN" secondAttribute="trailing" constant="5" id="MiI-Cb-8kL"/>
+                                                <constraint firstItem="peN-IY-sJN" firstAttribute="leading" secondItem="XPi-Oj-nwB" secondAttribute="leadingMargin" constant="5" id="OOo-gQ-hrg"/>
+                                                <constraint firstItem="nTA-bW-KFc" firstAttribute="top" secondItem="XPi-Oj-nwB" secondAttribute="topMargin" constant="5" id="P7m-3p-MZL"/>
+                                                <constraint firstAttribute="bottom" secondItem="wvx-xN-F4k" secondAttribute="bottom" constant="8" id="YL5-T1-3wp"/>
+                                                <constraint firstItem="aT9-pJ-DEx" firstAttribute="leading" secondItem="nTA-bW-KFc" secondAttribute="trailing" constant="5" id="azg-Tt-Fd8"/>
+                                                <constraint firstItem="aT9-pJ-DEx" firstAttribute="top" secondItem="XPi-Oj-nwB" secondAttribute="top" constant="8" id="cYT-WR-MMe"/>
+                                                <constraint firstItem="clH-H3-b7z" firstAttribute="top" secondItem="nTA-bW-KFc" secondAttribute="bottom" constant="8" id="khG-Xd-ee4"/>
+                                                <constraint firstAttribute="trailing" secondItem="wvx-xN-F4k" secondAttribute="trailing" constant="8" id="qnt-uO-VRr"/>
+                                                <constraint firstItem="clH-H3-b7z" firstAttribute="leading" secondItem="peN-IY-sJN" secondAttribute="trailing" constant="5" id="qpk-7L-b8a"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="clH-H3-b7z" secondAttribute="bottom" constant="5" id="uw2-qa-z9U"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="peN-IY-sJN" secondAttribute="bottom" constant="5" id="vAA-RW-Qx4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="favoriteBtn" destination="aT9-pJ-DEx" id="Vwa-qB-tfy"/>
+                                            <outlet property="filmImg" destination="peN-IY-sJN" id="ZfM-pZ-M42"/>
+                                            <outlet property="filmTitle" destination="nTA-bW-KFc" id="TiF-H4-9Pc"/>
+                                            <outlet property="id" destination="wvx-xN-F4k" id="V2V-Pc-Pdq"/>
+                                            <outlet property="overview" destination="clH-H3-b7z" id="5Rp-vA-rK8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fHY-cZ-qEw" secondAttribute="bottom" constant="10" id="4x7-4Y-ygu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rxN-M4-awl" secondAttribute="trailing" constant="40" id="QLC-Yd-kBi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fHY-cZ-qEw" secondAttribute="trailing" constant="10" id="S22-fk-yDA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4sS-g7-5xL" secondAttribute="trailing" constant="10" id="UBu-yM-Css"/>
+                            <constraint firstItem="rxN-M4-awl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Xio-Ox-4WO"/>
+                            <constraint firstItem="4sS-g7-5xL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="jfE-NL-ClC"/>
+                            <constraint firstItem="4sS-g7-5xL" firstAttribute="top" secondItem="rxN-M4-awl" secondAttribute="bottom" constant="10" id="sdt-ET-TiW"/>
+                            <constraint firstItem="fHY-cZ-qEw" firstAttribute="top" secondItem="4sS-g7-5xL" secondAttribute="bottom" constant="10" id="xkB-lx-qni"/>
+                            <constraint firstItem="rxN-M4-awl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xnt-c3-Hau"/>
+                            <constraint firstItem="rxN-M4-awl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="y75-K5-lBi"/>
+                            <constraint firstItem="fHY-cZ-qEw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="z7g-a3-Lbc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="popularFilmsTable" destination="4sS-g7-5xL" id="lZH-wj-bry"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="171.36431784107947"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="comingSoon" width="450" height="450"/>
+        <image name="favoriteBtn" width="128" height="128"/>
+        <image name="searchBtn" width="256" height="256"/>
+    </resources>
 </document>
