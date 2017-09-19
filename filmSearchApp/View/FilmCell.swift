@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum PopFovPick {
+    case popular
+    case favorite
+    case sorted
+}
+
 class FilmCell: UITableViewCell {
 
     //outlets
@@ -18,8 +24,19 @@ class FilmCell: UITableViewCell {
     @IBOutlet weak var favoriteBtn: CircleBtn!
     
     
+    //Variables
+    var currentCellId: Int?
+    var currentFilmList: PopFovPick?
+    
     @IBAction func favoriteBtnPressed(_ sender: Any) {
-        
+        if currentFilmList == .favorite {
+            let film = DataServise.instance.favoriteList[currentCellId!]
+            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+        } else {
+            let film = DataServise.instance.popList[currentCellId!]
+            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+        }
+        //to do reload data of cell
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,16 +48,19 @@ class FilmCell: UITableViewCell {
         }
     }
     
-    func configureCell(film: Movie, cellId: Int){
+    func configureCell(film: Movie, cellId: Int, list: PopFovPick){
         filmTitle.text = film.title
         overview.text = film.overview
-        id.text = "\(film.id)"
+        id.text = "\(cellId)"
+        currentCellId = cellId
+        currentFilmList = list
         
         if let tempImg = film.image as? UIImage {
             filmImg.image = tempImg
         }
         
-        if let isFov = film.relationship1?.isFavorite {
+        let isFov = film.relationship1?.isFavorite
+        if isFov! {
             favoriteBtn.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
         } else {
             favoriteBtn.backgroundColor = UIColor.clear

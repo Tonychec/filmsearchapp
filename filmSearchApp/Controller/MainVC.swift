@@ -8,33 +8,93 @@
 
 import UIKit
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
 
     //Outlets
     @IBOutlet weak var popularFilmsTable: UITableView!
+    @IBOutlet weak var popFovPicker: UISegmentedControl!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    //Variables
+    var currentPickerState = PopFovPick.popular
+    var currentGenreSelected: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+DataServise.instance.setDef()//debug call
+        
         popularFilmsTable.dataSource = self
         popularFilmsTable.delegate = self
-        
+        pickerView.dataSource = self
+        pickerView.delegate = self
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if currentPickerState == .popular {
+            return DataServise.instance.popList.count
+        } else if currentPickerState == .favorite {
+            return DataServise.instance.favoriteList.count
+        } else {
+            return DataServise.instance.tempSortedList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath) as? FilmCell {
-            DataServise.instance.setDefFilm()
-            let film = DataServise.instance.popList[indexPath.row]
-            cell.configureCell(film: film, cellId: indexPath.row)
-            return cell
+            if currentPickerState == .popular {
+                let film = DataServise.instance.popList[indexPath.row]
+                cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
+                return cell
+            } else if currentPickerState == .favorite  {
+                let film = DataServise.instance.favoriteList[indexPath.row]
+                cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
+                return cell
+            }  else if currentPickerState == .sorted  {
+                print(indexPath.row)
+                let film: Movie = DataServise.instance.tempSortedList[indexPath.row]
+                    cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
+                    return cell
+            } else {
+                return FilmCell()
+            }
         } else {
             return FilmCell()
         }
     }
-
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return DataServise.instance.genreList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return DataServise.instance.genreList[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.currentGenreSelected = pickerView.selectedRow(inComponent: 0)
+        if currentPickerState == .favorite {
+            DataServise.instance.sortList(list: DataServise.instance.favoriteList, genre: currentGenreSelected!)
+            currentPickerState = .sorted
+        } else {
+            DataServise.instance.sortList(list: DataServise.instance.popList, genre: currentGenreSelected!)
+            currentPickerState = .sorted
+        }
+        popularFilmsTable.reloadData()
+    }
+    
+    @IBAction func segmentControllChenged(_ sender: Any) {
+        switch popFovPicker.selectedSegmentIndex {
+        case 1:
+            currentPickerState = .favorite
+        default:
+            currentPickerState = .popular
+        }
+        popularFilmsTable.reloadData()
+    }
 }
 
