@@ -18,6 +18,8 @@
 		CC1404F41F7100D300072422 /* filmSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1404F31F7100D300072422 /* filmSearchAppTests.swift */; };
 		CC1404FF1F7100D300072422 /* filmSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1404FE1F7100D300072422 /* filmSearchAppUITests.swift */; };
 		CC72E06B1F712548001F61B6 /* DataServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72E06A1F712548001F61B6 /* DataServise.swift */; };
+		CC72E06E1F71B103001F61B6 /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72E06C1F71B103001F61B6 /* FilmVC.swift */; };
+		CC72E06F1F71B103001F61B6 /* FilmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC72E06D1F71B103001F61B6 /* FilmVC.xib */; };
 		CC787B761F71093D00C25B17 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B701F71093D00C25B17 /* Movie+CoreDataClass.swift */; };
 		CC787B771F71093D00C25B17 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B711F71093D00C25B17 /* Movie+CoreDataProperties.swift */; };
 		CC787B781F71093D00C25B17 /* MovieDetails+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B721F71093D00C25B17 /* MovieDetails+CoreDataClass.swift */; };
@@ -70,6 +72,8 @@
 		CC1404FE1F7100D300072422 /* filmSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filmSearchAppUITests.swift; sourceTree = "<group>"; };
 		CC1405001F7100D300072422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC72E06A1F712548001F61B6 /* DataServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServise.swift; sourceTree = "<group>"; };
+		CC72E06C1F71B103001F61B6 /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
+		CC72E06D1F71B103001F61B6 /* FilmVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmVC.xib; sourceTree = "<group>"; };
 		CC787B701F71093D00C25B17 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CC787B711F71093D00C25B17 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CC787B721F71093D00C25B17 /* MovieDetails+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetails+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		CC1404DA1F7100D300072422 /* filmSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				CC72E0701F71B10E001F61B6 /* XIBs */,
 				CC72E0691F712511001F61B6 /* Services */,
 				CC787B6F1F71019000C25B17 /* Controller */,
 				CC787B6E1F71018900C25B17 /* Model */,
@@ -186,6 +191,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		CC72E0701F71B10E001F61B6 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				CC72E06D1F71B103001F61B6 /* FilmVC.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		CC787B6D1F71018100C25B17 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				CC1404DD1F7100D300072422 /* MainVC.swift */,
+				CC72E06C1F71B103001F61B6 /* FilmVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC72E06F1F71B103001F61B6 /* FilmVC.xib in Resources */,
 				CC1404E91F7100D300072422 /* LaunchScreen.storyboard in Resources */,
 				CC1404E61F7100D300072422 /* Assets.xcassets in Resources */,
 				CC1404E11F7100D300072422 /* Main.storyboard in Resources */,
@@ -516,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC72E06E1F71B103001F61B6 /* FilmVC.swift in Sources */,
 				CC787B7D1F7109C500C25B17 /* CircleBtn.swift in Sources */,
 				CC787B7B1F71093D00C25B17 /* FilmGenre+CoreDataProperties.swift in Sources */,
 				CC787B7F1F710A1800C25B17 /* GradientView.swift in Sources */,

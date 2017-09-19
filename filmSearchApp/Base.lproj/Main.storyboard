@@ -58,6 +58,9 @@
                                             <constraint firstAttribute="width" constant="50" id="LJP-Uc-TL1"/>
                                         </constraints>
                                         <state key="normal" image="searchBtn"/>
+                                        <connections>
+                                            <action selector="searchBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fgQ-HZ-CmA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -122,8 +125,8 @@
                                                     </constraints>
                                                     <state key="normal" image="favoriteBtn"/>
                                                     <connections>
-                                                        <action selector="favoriteBtnPressed:" destination="9tj-0Z-0uF" eventType="touchUpInside" id="smh-3x-4y6"/>
-                                                        <action selector="fovBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="chC-xZ-lEA"/>
+                                                        <action selector="favoriteBtnPressed:" destination="9tj-0Z-0uF" eventType="touchUpInside" id="Ete-cD-IAE"/>
+                                                        <action selector="fovBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdw-Ze-NbY"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

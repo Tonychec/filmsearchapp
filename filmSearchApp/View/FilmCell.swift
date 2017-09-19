@@ -28,6 +28,8 @@ class FilmCell: UITableViewCell {
     var currentCellId: Int?
     var currentFilmList: PopFovPick?
     
+    
+    //to do add for .sorted
     @IBAction func favoriteBtnPressed(_ sender: Any) {
         if currentFilmList == .favorite {
             let film = DataServise.instance.favoriteList[currentCellId!]
@@ -52,6 +54,7 @@ class FilmCell: UITableViewCell {
         } else {
             self.layer.backgroundColor = UIColor.clear.cgColor
         }
+        
     }
     
     func configureCell(film: Movie, cellId: Int, list: PopFovPick){

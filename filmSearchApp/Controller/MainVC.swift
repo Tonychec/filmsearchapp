@@ -63,6 +63,12 @@ DataServise.instance.setDef()//debug call
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let filmScreen = FilmVC()
+//        filmScreen.modalPresentationStyle = .custom
+//        present(filmScreen, animated: true, completion: nil)
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -89,6 +95,9 @@ DataServise.instance.setDef()//debug call
     
     @IBAction func fovBtnPressed(_ sender: Any) {
         popularFilmsTable.reloadData()
+    }
+    
+    @IBAction func searchBtnPressed(_ sender: Any) {
     }
     
     @IBAction func segmentControllChenged(_ sender: Any) {
