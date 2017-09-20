@@ -17,12 +17,34 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
     
     //Variables
     var currentPickerState = PopFovPick.popular
-    var currentGenreSelected: Int?
+    var currentGenreSelected: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-DataServise.instance.setDef()//debug call
+        DispatchQueue.global().async {
+            do {
+                MyRequestServise.instance.getGenre { (success) in
+                    if success {
+                        DispatchQueue.global().sync {
+                            self.pickerView.reloadAllComponents()
+                        }
+                    }
+                }
+            }
+        }
+        
+        DispatchQueue.global().async {
+            do {
+                MyRequestServise.instance.getFovariteList { (success) in
+                    if success {
+                        DispatchQueue.global().sync {
+                            self.popularFilmsTable.reloadData()
+                        }
+                    }
+                }
+            }
+        }
         
         popularFilmsTable.dataSource = self
         popularFilmsTable.delegate = self
@@ -81,13 +103,17 @@ DataServise.instance.setDef()//debug call
         return DataServise.instance.genreList[row].name
     }
     
+    
+    //to do current reload data
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.currentGenreSelected = pickerView.selectedRow(inComponent: 0)
-        if currentPickerState == .favorite {
-            DataServise.instance.sortList(list: DataServise.instance.favoriteList, genre: currentGenreSelected!)
+        self.currentGenreSelected = "\(pickerView.selectedRow(inComponent: 0))"
+        if currentGenreSelected == "" {
+            currentPickerState = .favorite
+        } else if currentPickerState == .favorite {
+            DataServise.instance.sortList(list: DataServise.instance.favoriteList, genre: currentGenreSelected)
             currentPickerState = .sorted
         } else {
-            DataServise.instance.sortList(list: DataServise.instance.popList, genre: currentGenreSelected!)
+            DataServise.instance.sortList(list: DataServise.instance.popList, genre: currentGenreSelected)
             currentPickerState = .sorted
         }
         popularFilmsTable.reloadData()

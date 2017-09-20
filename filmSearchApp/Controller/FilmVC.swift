@@ -69,17 +69,14 @@ class FilmVC: UIViewController {
             taglineText.text = txt
         }
         
+        if let release = film.relationship1?.releaseDate {
+            releaseDate.text = release
+        }
         
-        // to do data release show
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd-MMM-yyyy"
-//        if let dateTmp = formatter.string(from: film.relationship1?.releaseDate! as! Date) as? String {
-//            releaseDate.text = dateTmp
+//        if let tempImg = UIImage(named: ) {
+//            filmImage.image = tempImg
 //        }
         
-        if let tempImg = film.image as? UIImage {
-            filmImage.image = tempImg
-        }
         isFov = film.relationship1?.isFavorite
         checkBtnColor()
     }

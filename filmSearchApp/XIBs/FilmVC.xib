@@ -95,7 +95,6 @@
                             </state>
                             <connections>
                                 <action selector="closeBtnPressed:" destination="-1" eventType="touchUpInside" id="CZJ-T6-vqI"/>
-                                <action selector="fovBtnPressed:" destination="-1" eventType="touchUpInside" id="7dL-kZ-rhd"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whH-b9-iEP">

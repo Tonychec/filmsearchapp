@@ -17,8 +17,8 @@ extension Movie {
         return NSFetchRequest<Movie>(entityName: "Movie")
     }
 
-    @NSManaged public var id: Int32
-    @NSManaged public var image: NSObject?
+    @NSManaged public var id: String?
+    @NSManaged public var image: String?
     @NSManaged public var overview: String?
     @NSManaged public var title: String?
     @NSManaged public var relationship: NSSet?

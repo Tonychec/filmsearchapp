@@ -19,7 +19,7 @@ extension MovieDetails {
 
     @NSManaged public var addDate: NSDate?
     @NSManaged public var isFavorite: Bool
-    @NSManaged public var releaseDate: NSDate?
+    @NSManaged public var releaseDate: String?
     @NSManaged public var tagline: String?
     @NSManaged public var relationship: Movie?
 
