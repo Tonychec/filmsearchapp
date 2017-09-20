@@ -33,7 +33,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
                 }
             }
         }
-        
+
         DispatchQueue.global().async {
             do {
                 MyRequestServise.instance.getFovariteList { (success) in

@@ -51,12 +51,8 @@ class FilmCell: UITableViewCell {
         id.text = "\(cellId)"
         currentCell = cellId
         currentFilmList = list
-        
-        if let tempImg = UIImage(named: film.image!) {
-            filmImg.image = tempImg
-        } else {
-            filmImg.image = UIImage(named: "comingSoon")
-        }
+        filmImg.image = film.image as! UIImage
+
         
         isFov = film.relationship1?.isFavorite
         checkBtnColor()

@@ -17,4 +17,5 @@ let URL_GENRE = "\(URL_BASE)genre/movie/list?\(API_KEY)"
 let URL_FOVARITE = "\(URL_BASE)discover/movie?\(API_KEY)"
 let URL_SEARCH = "\(URL_BASE)search/movie?\(API_KEY)&query="
 let URL_FILM_INFO = "\(URL_BASE)movie/"
+let URL_IMG = "https://image.tmdb.org/t/p/w300_and_h450_bestv2"
 

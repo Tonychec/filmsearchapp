@@ -2,7 +2,7 @@
 //  Movie+CoreDataProperties.swift
 //  filmSearchApp
 //
-//  Created by Nomad on 9/19/17.
+//  Created by Nomad on 9/20/17.
 //  Copyright © 2017 ios.Nomad. All rights reserved.
 //
 //
@@ -18,7 +18,7 @@ extension Movie {
     }
 
     @NSManaged public var id: String?
-    @NSManaged public var image: String?
+    @NSManaged public var image: NSObject?
     @NSManaged public var overview: String?
     @NSManaged public var title: String?
     @NSManaged public var relationship: NSSet?

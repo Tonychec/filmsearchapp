@@ -44,7 +44,7 @@ class MyRequestServise {
                 var newList = [Movie]()
                 for object in json {
                     for obj in object.1 {
-                        let newFilm = DataServise.instance.createFilm(id: obj.1["id"].stringValue, image: obj.1["poster_path"].stringValue, overview: obj.1["overview"].stringValue, title: obj.1["title"].stringValue)
+                        let newFilm = DataServise.instance.createFilm(id: obj.1["id"].stringValue, imageAdress: obj.1["poster_path"].stringValue, overview: obj.1["overview"].stringValue, title: obj.1["title"].stringValue)
                         let filmDetails = DataServise.instance.createDetails(releaseDate: obj.1["release_date"].stringValue)
                         newFilm.relationship1 = filmDetails
                         

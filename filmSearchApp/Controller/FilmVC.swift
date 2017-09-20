@@ -57,26 +57,12 @@ class FilmVC: UIViewController {
         currentCell = cellId
         currentFilmList = list
         
-        if let titleTmp = film.title {
-            titleTxt.text = titleTmp
-        }
-        
-        if let owerviewTmp = film.overview {
-            owerviewTxt.text = owerviewTmp
-        }
-        
-        if let txt = film.relationship1?.tagline {
-            taglineText.text = txt
-        }
-        
-        if let release = film.relationship1?.releaseDate {
-            releaseDate.text = release
-        }
-        
-//        if let tempImg = UIImage(named: ) {
-//            filmImage.image = tempImg
-//        }
-        
+        titleTxt.text = film.title
+        owerviewTxt.text = film.overview
+        taglineText.text = film.relationship1?.tagline
+        releaseDate.text = film.relationship1?.releaseDate
+        filmImage.image = film.image as! UIImage
+
         isFov = film.relationship1?.isFavorite
         checkBtnColor()
     }
