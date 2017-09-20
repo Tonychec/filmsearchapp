@@ -20,6 +20,7 @@
 		CC72E06B1F712548001F61B6 /* DataServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72E06A1F712548001F61B6 /* DataServise.swift */; };
 		CC72E06E1F71B103001F61B6 /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72E06C1F71B103001F61B6 /* FilmVC.swift */; };
 		CC72E06F1F71B103001F61B6 /* FilmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC72E06D1F71B103001F61B6 /* FilmVC.xib */; };
+		CC72E0741F726444001F61B6 /* MyRequestServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72E0731F726444001F61B6 /* MyRequestServise.swift */; };
 		CC787B761F71093D00C25B17 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B701F71093D00C25B17 /* Movie+CoreDataClass.swift */; };
 		CC787B771F71093D00C25B17 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B711F71093D00C25B17 /* Movie+CoreDataProperties.swift */; };
 		CC787B781F71093D00C25B17 /* MovieDetails+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC787B721F71093D00C25B17 /* MovieDetails+CoreDataClass.swift */; };
@@ -74,6 +75,7 @@
 		CC72E06A1F712548001F61B6 /* DataServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServise.swift; sourceTree = "<group>"; };
 		CC72E06C1F71B103001F61B6 /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
 		CC72E06D1F71B103001F61B6 /* FilmVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmVC.xib; sourceTree = "<group>"; };
+		CC72E0731F726444001F61B6 /* MyRequestServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestServise.swift; sourceTree = "<group>"; };
 		CC787B701F71093D00C25B17 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CC787B711F71093D00C25B17 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CC787B721F71093D00C25B17 /* MovieDetails+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetails+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CC72E06A1F712548001F61B6 /* DataServise.swift */,
+				CC72E0731F726444001F61B6 /* MyRequestServise.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				CC72E06B1F712548001F61B6 /* DataServise.swift in Sources */,
 				CC1404E41F7100D300072422 /* filmSearchApp.xcdatamodeld in Sources */,
 				CC787B7A1F71093D00C25B17 /* FilmGenre+CoreDataClass.swift in Sources */,
+				CC72E0741F726444001F61B6 /* MyRequestServise.swift in Sources */,
 				CCDD27791F71140100B3895E /* FilmCell.swift in Sources */,
 				CC1404DE1F7100D300072422 /* MainVC.swift in Sources */,
 				CC1404DC1F7100D300072422 /* AppDelegate.swift in Sources */,

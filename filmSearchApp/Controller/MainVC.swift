@@ -40,33 +40,33 @@ DataServise.instance.setDef()//debug call
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath) as? FilmCell {
-            if currentPickerState == .popular {
-                let film = DataServise.instance.popList[indexPath.row]
-                cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
-                return cell
-            } else if currentPickerState == .favorite  {
-                let film = DataServise.instance.favoriteList[indexPath.row]
-                cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
-                return cell
-            }  else if currentPickerState == .sorted  {
-                print(indexPath.row)
-                let film: Movie = DataServise.instance.tempSortedList[indexPath.row]
-                    cell.configureCell(film: film, cellId: indexPath.row, list: currentPickerState)
-                    return cell
-            } else {
-                return FilmCell()
-            }
-        } else {
-            return FilmCell()
+    func filmChoice(indexPath: IndexPath) -> Movie {
+        if currentPickerState == .popular {
+            let film = DataServise.instance.popList[indexPath.row]
+            return film
+        } else if currentPickerState == .favorite  {
+            let film = DataServise.instance.favoriteList[indexPath.row]
+            return film
+        }  else {
+            let film: Movie = DataServise.instance.tempSortedList[indexPath.row]
+            return film
         }
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath) as? FilmCell {
+                cell.configureCell(film: filmChoice(indexPath: indexPath), cellId: indexPath.row, list: currentPickerState)
+                return cell
+            } else {
+                return FilmCell()
+            }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let filmScreen = FilmVC()
-//        filmScreen.modalPresentationStyle = .custom
-//        present(filmScreen, animated: true, completion: nil)
+        let filmScreen = FilmVC()
+        filmScreen.modalPresentationStyle = .custom
+        present(filmScreen, animated: true, completion: nil)
+        filmScreen.setupFilmInfo(film: filmChoice(indexPath: indexPath), cellId: indexPath.row, list: currentPickerState)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

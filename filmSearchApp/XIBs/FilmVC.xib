@@ -18,8 +18,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmVC" customModule="filmSearchApp" customModuleProvider="target">
             <connections>
                 <outlet property="bgView" destination="ICD-tE-EI4" id="dcA-Tu-hbV"/>
-                <outlet property="favoriteBtnPressed" destination="de1-D8-xtT" id="1qS-w4-1Ts"/>
                 <outlet property="filmImage" destination="tTP-n0-ulV" id="3Pt-01-fLY"/>
+                <outlet property="fovBtn" destination="de1-D8-xtT" id="GWf-xb-F7h"/>
                 <outlet property="owerviewTxt" destination="4i1-Wq-1tQ" id="afA-PX-EdR"/>
                 <outlet property="releaseDate" destination="fVd-lP-sqV" id="8IN-5n-Gss"/>
                 <outlet property="taglineText" destination="c8D-9u-AgB" id="JIy-oo-Cuc"/>
@@ -36,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUo-wy-WVy">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUo-wy-WVy">
                     <rect key="frame" x="20" y="120" width="335" height="397"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comingSoon" translatesAutoresizingMaskIntoConstraints="NO" id="tTP-n0-ulV">
@@ -80,7 +80,7 @@
                             </constraints>
                             <state key="normal" image="favoriteBtn"/>
                             <connections>
-                                <action selector="favoriteBtnPressed:" destination="-1" eventType="touchUpInside" id="WAE-hZ-pxV"/>
+                                <action selector="favoriteBtnPressed:" destination="-1" eventType="touchUpInside" id="Uwl-FM-e9W"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN6-uB-1k3" customClass="CircleBtn" customModule="filmSearchApp" customModuleProvider="target">
@@ -95,6 +95,7 @@
                             </state>
                             <connections>
                                 <action selector="closeBtnPressed:" destination="-1" eventType="touchUpInside" id="CZJ-T6-vqI"/>
+                                <action selector="fovBtnPressed:" destination="-1" eventType="touchUpInside" id="7dL-kZ-rhd"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whH-b9-iEP">

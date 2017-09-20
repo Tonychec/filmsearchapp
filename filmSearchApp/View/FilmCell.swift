@@ -25,26 +25,14 @@ class FilmCell: UITableViewCell {
     
     
     //Variables
-    var currentCellId: Int?
-    var currentFilmList: PopFovPick?
+    var currentCell: Int!
+    var currentFilmList: PopFovPick!
+    var isFov: Bool!
     
-    
-    //to do add for .sorted
     @IBAction func favoriteBtnPressed(_ sender: Any) {
-        if currentFilmList == .favorite {
-            let film = DataServise.instance.favoriteList[currentCellId!]
-            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
-            DataServise.instance.favoriteList.remove(at: currentCellId!)
-        } else {
-            let film = DataServise.instance.popList[currentCellId!]
-            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
-            if (film.relationship1?.isFavorite)! {
-                DataServise.instance.favoriteList.append(film)
-            } else {
-                let id = DataServise.instance.favoriteList.index(of: film)
-                DataServise.instance.favoriteList.remove(at: id!)
-            }
-        }
+        DataServise.instance.favoriteSet(currentList: currentFilmList, currentCellId: currentCell)
+        isFov = !isFov
+        checkBtnColor()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -54,21 +42,25 @@ class FilmCell: UITableViewCell {
         } else {
             self.layer.backgroundColor = UIColor.clear.cgColor
         }
-        
+        checkBtnColor()
     }
     
     func configureCell(film: Movie, cellId: Int, list: PopFovPick){
         filmTitle.text = film.title
         overview.text = film.overview
         id.text = "\(cellId)"
-        currentCellId = cellId
+        currentCell = cellId
         currentFilmList = list
         
         if let tempImg = film.image as? UIImage {
             filmImg.image = tempImg
         }
         
-        let isFov = film.relationship1?.isFavorite
+        isFov = film.relationship1?.isFavorite
+        checkBtnColor()
+    }
+    
+    func checkBtnColor () {
         if isFov! {
             favoriteBtn.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
         } else {

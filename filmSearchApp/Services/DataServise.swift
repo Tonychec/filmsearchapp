@@ -35,6 +35,24 @@ class DataServise {
         tempSortedList = tempList
     }
     
+    //to do add for .sorted
+    func favoriteSet (currentList: PopFovPick, currentCellId: Int) {
+        if currentList == .favorite {
+            let film = DataServise.instance.favoriteList[currentCellId]
+            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+            DataServise.instance.favoriteList.remove(at: currentCellId)
+        } else {
+            let film = DataServise.instance.popList[currentCellId]
+            film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!
+            if (film.relationship1?.isFavorite)! {
+                DataServise.instance.favoriteList.append(film)
+            } else {
+                let id = DataServise.instance.favoriteList.index(of: film)
+                DataServise.instance.favoriteList.remove(at: id!)
+            }
+        }
+    }
+    
     func setDef() {
         
         var film: Movie = Movie.mr_createEntity()!
