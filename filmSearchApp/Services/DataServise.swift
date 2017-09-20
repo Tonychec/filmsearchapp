@@ -19,22 +19,18 @@ class DataServise {
     public var genreList = [FilmGenre]()
     public var tempSortedList = [Movie]()
     
-    // to do - check error in favoriteList sort
     func sortList(list: [Movie], genre: String) {
         var tempList = [Movie]()
         for element in list {
-            if let filmGenres = element.relationship?.allObjects {
-                for filmGenre in filmGenres {
-                    let currentFilmGenre = filmGenre as! FilmGenre
-                        if currentFilmGenre.id == genre {
-                        tempList.append(element)
-                    }
+            for filmGenre in element.relationship! {
+                if (filmGenre as! FilmGenre).id == genre {
+                    tempList.append(element)
                 }
             }
         }
         tempSortedList = tempList
     }
-    
+
     func updateGenreList(newList: [FilmGenre]) {
         var tmpList = [FilmGenre]()
         let noneGenre = FilmGenre.mr_createEntity()!
@@ -71,7 +67,6 @@ class DataServise {
         newFilm.overview = overview
         newFilm.title = title
         newFilm.image = UIImage(named: "comingSoon")
-        print(imageAdress)
 
         let url = URL(string: "\(URL_IMG)\(imageAdress)")!
         DispatchQueue.global().async {
