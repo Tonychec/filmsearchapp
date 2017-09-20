@@ -17,6 +17,7 @@ class DataServise {
     public var popList = [Movie]()
     public var favoriteList = [Movie]()
     public var genreList = [FilmGenre]()
+    public var searchList = [Movie]()
     public var tempSortedList = [Movie]()
     
     func sortList(list: [Movie], genre: String) {
@@ -42,8 +43,7 @@ class DataServise {
         self.genreList = tmpList
     }
     
-    //to do add for .sorted
-    func favoriteSet (currentList: PopFovPick, currentCellId: Int) {
+    func favoriteSet(currentList: PopFovPick, currentCellId: Int) {
         if currentList == .favorite {
             let film = DataServise.instance.favoriteList[currentCellId]
             film.relationship1?.isFavorite = !(film.relationship1?.isFavorite)!

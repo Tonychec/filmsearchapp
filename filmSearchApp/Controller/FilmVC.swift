@@ -14,7 +14,6 @@ class FilmVC: UIViewController {
     @IBOutlet weak var titleTxt: UILabel!
     @IBOutlet weak var filmImage: UIImageView!
     @IBOutlet weak var owerviewTxt: UILabel!
-    @IBOutlet weak var taglineText: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var fovBtn: CircleBtn!
@@ -45,21 +44,18 @@ class FilmVC: UIViewController {
         titleTxt.text = "Download"
         filmImage.image = UIImage(named: "comingSoon")
         owerviewTxt.text = "no info"
-        taglineText.text = "no info"
         releaseDate.text = "no info"
-        
         
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(FilmVC.closeTap(_:)))
         bgView.addGestureRecognizer(closeTouch)
     }
     
-    func setupFilmInfo (film: Movie, cellId: Int, list: PopFovPick) {
+    func setupFilmInfo(film: Movie, cellId: Int, list: PopFovPick) {
         currentCell = cellId
         currentFilmList = list
         
         titleTxt.text = film.title
         owerviewTxt.text = film.overview
-        taglineText.text = film.relationship1?.tagline
         releaseDate.text = film.relationship1?.releaseDate
         filmImage.image = film.image as! UIImage
 

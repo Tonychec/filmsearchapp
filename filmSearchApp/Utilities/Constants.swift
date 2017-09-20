@@ -10,6 +10,14 @@ import Foundation
 
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
+//Enums
+enum PopFovPick {
+    case popular
+    case favorite
+    case sorted
+    case search
+}
+
 // URL Constants
 let API_KEY = "api_key=1b082cd796d65577bbf0a6819ea5055a"
 let URL_BASE = "https://api.themoviedb.org/3/"
@@ -19,3 +27,5 @@ let URL_SEARCH = "\(URL_BASE)search/movie?\(API_KEY)&query="
 let URL_FILM_INFO = "\(URL_BASE)movie/"
 let URL_IMG = "https://image.tmdb.org/t/p/w300_and_h450_bestv2"
 
+// Segue
+let TO_SEARCH_VC = "toSearchVC"

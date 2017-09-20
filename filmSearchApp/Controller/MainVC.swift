@@ -124,6 +124,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
+        DataServise.instance.searchList = DataServise.instance.popList
+
+        performSegue(withIdentifier: TO_SEARCH_VC, sender: nil)
     }
     
     @IBAction func segmentControllChenged(_ sender: Any) {

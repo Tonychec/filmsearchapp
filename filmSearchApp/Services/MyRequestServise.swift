@@ -73,4 +73,8 @@ class MyRequestServise {
         }
     }
     
+    func search(title: String, completion: @escaping CompletionHandler){
+        
+    }
+    
 }

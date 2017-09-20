@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum PopFovPick {
-    case popular
-    case favorite
-    case sorted
-}
-
 class FilmCell: UITableViewCell {
 
     //outlets
