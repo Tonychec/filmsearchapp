@@ -29,3 +29,10 @@ let URL_IMG = "https://image.tmdb.org/t/p/w300_and_h450_bestv2"
 
 // Segue
 let TO_SEARCH_VC = "toSearchVC"
+
+//Strings
+let EMPTY_SEARCH_LIST = "Write the name of the movie and click the search button"
+let EMPTY_SEARCH_LABEL = "Ooops, it seems you have no idea for search"
+let EMPTY_FOVARITE = "There are no favorite films yet."
+let EMPTY_POPULAR = "It seems there is no internet connection, something went wrong."
+let EMPTY_GENRE = "Looks like there are no movies in this category, choose a different genre."

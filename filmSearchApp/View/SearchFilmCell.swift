@@ -15,7 +15,7 @@ class SearchFilmCell: UICollectionViewCell {
     @IBOutlet weak var celTitleTxt: UILabel!
     
     func configureCell(film: Movie) {
-        cellImg.image = film.image as! UIImage
+        cellImg.image = (film.image as! UIImage)
         celTitleTxt.text = film.title
     }
 }

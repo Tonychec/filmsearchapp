@@ -14,6 +14,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
     @IBOutlet weak var popularFilmsTable: UITableView!
     @IBOutlet weak var popFovPicker: UISegmentedControl!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var emptyListLbl: UILabel!
     
     //Variables
     var currentPickerState = PopFovPick.popular
@@ -54,11 +55,32 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if currentPickerState == .popular {
-            return DataServise.instance.popList.count
+            let count = DataServise.instance.popList.count
+            if count == 0 {
+                emptyListLbl.text = EMPTY_POPULAR
+                emptyListLbl.isHidden = false
+            } else {
+                emptyListLbl.isHidden = true
+            }
+            return count
         } else if currentPickerState == .favorite {
-            return DataServise.instance.favoriteList.count
+            let count = DataServise.instance.favoriteList.count
+            if count == 0 {
+                emptyListLbl.text = EMPTY_FOVARITE
+                emptyListLbl.isHidden = false
+            } else {
+                emptyListLbl.isHidden = true
+            }
+            return count
         } else {
-            return DataServise.instance.tempSortedList.count
+            let count = DataServise.instance.tempSortedList.count
+            if count == 0 {
+                emptyListLbl.text = EMPTY_GENRE
+                emptyListLbl.isHidden = false
+            } else {
+                emptyListLbl.isHidden = true
+            }
+            return count
         }
     }
     
@@ -124,8 +146,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
-        DataServise.instance.searchList = DataServise.instance.popList
-
         performSegue(withIdentifier: TO_SEARCH_VC, sender: nil)
     }
     

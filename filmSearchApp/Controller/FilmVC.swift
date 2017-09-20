@@ -57,7 +57,7 @@ class FilmVC: UIViewController {
         titleTxt.text = film.title
         owerviewTxt.text = film.overview
         releaseDate.text = film.relationship1?.releaseDate
-        filmImage.image = film.image as! UIImage
+        filmImage.image = (film.image as! UIImage)
 
         isFov = film.relationship1?.isFavorite
         checkBtnColor()

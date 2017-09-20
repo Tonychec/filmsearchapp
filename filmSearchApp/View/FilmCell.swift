@@ -45,7 +45,7 @@ class FilmCell: UITableViewCell {
         id.text = "\(cellId)"
         currentCell = cellId
         currentFilmList = list
-        filmImg.image = film.image as! UIImage
+        filmImg.image = (film.image as! UIImage)
 
         
         isFov = film.relationship1?.isFavorite

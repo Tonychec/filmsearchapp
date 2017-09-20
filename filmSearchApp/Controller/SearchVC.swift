@@ -13,6 +13,7 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     //Outlets
     @IBOutlet weak var searchTitleTxt: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyListLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +39,19 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
                 }
             }
         } else {
-            
+            emptyListLabel.text = EMPTY_SEARCH_LABEL
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DataServise.instance.searchList.count
+        let itemQuantity = DataServise.instance.searchList.count
+        if itemQuantity == 0 {
+            emptyListLabel.text = EMPTY_SEARCH_LIST
+            emptyListLabel.isHidden = false
+        } else {
+            emptyListLabel.isHidden = true
+        }
+        return itemQuantity
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

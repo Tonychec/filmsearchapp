@@ -74,7 +74,7 @@ class MyRequestServise {
     }
     
     func search(title: String, completion: @escaping CompletionHandler){
-        var validRequestTxt = title.replacingOccurrences(of: " ", with: "+")
+        let validRequestTxt = title.replacingOccurrences(of: " ", with: "+")
         Alamofire.request("\(URL_SEARCH)\(validRequestTxt)").responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
