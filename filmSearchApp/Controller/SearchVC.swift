@@ -26,7 +26,20 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
-        
+        let searchTxt = searchTitleTxt.text!
+        if searchTxt != "" {
+            DispatchQueue.global().async {
+                do {
+                    MyRequestServise.instance.search(title: searchTxt, completion: { (success) in
+                        DispatchQueue.global().sync {
+                            self.collectionView.reloadData()
+                        }
+                    })
+                }
+            }
+        } else {
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

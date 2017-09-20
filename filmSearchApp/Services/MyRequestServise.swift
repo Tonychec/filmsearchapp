@@ -74,7 +74,40 @@ class MyRequestServise {
     }
     
     func search(title: String, completion: @escaping CompletionHandler){
-        
+        var validRequestTxt = title.replacingOccurrences(of: " ", with: "+")
+        Alamofire.request("\(URL_SEARCH)\(validRequestTxt)").responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                let json = JSON(data: data)
+                var newList = [Movie]()
+                for object in json {
+                    for obj in object.1 {
+                        let newFilm = DataServise.instance.createFilm(id: obj.1["id"].stringValue, imageAdress: obj.1["poster_path"].stringValue, overview: obj.1["overview"].stringValue, title: obj.1["title"].stringValue)
+                        let filmDetails = DataServise.instance.createDetails(releaseDate: obj.1["release_date"].stringValue)
+                        newFilm.relationship1 = filmDetails
+                        
+                        for element in obj.1["genre_ids"] {
+                            var flag = true
+                            for elem in DataServise.instance.genreList {
+                                if elem.id == element.1.stringValue {
+                                    newFilm.addToRelationship(elem)
+                                    flag = false
+                                }
+                            }
+                            if flag {
+                                let filmGenre = DataServise.instance.createGenre(id: element.1.stringValue)
+                                DataServise.instance.genreList.append(filmGenre)
+                                newFilm.addToRelationship(filmGenre)
+                            }
+                        }
+                        newList.append(newFilm)
+                    }
+                }
+                DataServise.instance.searchList = newList
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
-    
 }
