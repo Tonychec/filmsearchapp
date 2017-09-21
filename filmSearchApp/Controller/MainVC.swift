@@ -158,5 +158,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPi
         }
         popularFilmsTable.reloadData()
     }
+    
 }
 

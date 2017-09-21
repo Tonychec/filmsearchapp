@@ -28,7 +28,9 @@ class MyRequestServise {
                         tmpList.append(genr)
                     }
                 }
-                DataServise.instance.updateGenreList(newList: tmpList)
+                if tmpList.count != 0 {
+                    DataServise.instance.updateGenreList(newList: tmpList)
+                }
                 completion(true)
             } else {
                 completion(false)
@@ -65,7 +67,9 @@ class MyRequestServise {
                         newList.append(newFilm)
                     }
                 }
-                DataServise.instance.popList = newList
+                if newList.count != 0 {
+                    DataServise.instance.popList = newList
+                }
                 completion(true)
             } else {
                 completion(false)
