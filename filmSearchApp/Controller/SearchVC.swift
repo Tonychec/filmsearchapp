@@ -20,9 +20,7 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchVC.handleTap))
-        view.addGestureRecognizer(tap)
+    
     }
     
     @IBAction func closeBtnPressed(_ sender: Any) {
@@ -30,6 +28,7 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     }
     
     @IBAction func searchBtnPressed(_ sender: Any) {
+        view.endEditing(true)
         let searchTxt = searchTitleTxt.text!
         if searchTxt != "" {
             DispatchQueue.global().async {
@@ -86,9 +85,6 @@ class SearchVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         let film = DataServise.instance.searchList[indexPath.item]
         filmScreen.setupFilmInfo(film: film, cellId: indexPath.item, list: .search)
     }
-    
-    @objc func handleTap() {
-        view.endEditing(true)
-    }
+
 }
 
