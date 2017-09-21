@@ -20,6 +20,13 @@ class DataServise {
     public var searchList = [Movie]()
     public var tempSortedList = [Movie]()
     
+    //to do saving data
+    //dont work(((
+//    MagicalRecord.saveWithBlock {
+//    (localContext) in
+//    let movie = Movie.MR_importFromObject(favoriteList, inContext: localContext)
+//    }
+    
     func sortList(list: [Movie], genre: String) {
         var tempList = [Movie]()
         for element in list {
